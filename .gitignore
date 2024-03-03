@@ -9,6 +9,10 @@
 # testing
 /coverage
 
+# storybook
+*storybook.log
+/storybook-static
+
 # next.js
 /.next/
 /out/

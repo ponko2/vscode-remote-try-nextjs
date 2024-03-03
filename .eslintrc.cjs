@@ -3,7 +3,12 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
-  extends: ["eslint:recommended", "next/core-web-vitals", "prettier"],
+  extends: [
+    "eslint:recommended",
+    "plugin:storybook/recommended",
+    "next/core-web-vitals",
+    "prettier",
+  ],
   overrides: [
     {
       files: ["**/*.{js,jsx,ts,tsx}"],
