@@ -3,14 +3,18 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
-  extends: ["eslint:recommended", "next/core-web-vitals"],
+  extends: ["eslint:recommended", "next/core-web-vitals", "prettier"],
   overrides: [
     {
       files: ["**/*.{js,jsx,ts,tsx}"],
       settings: {
         linkComponents: [{ name: "Link", linkAttribute: "href" }],
       },
-      extends: ["plugin:react/jsx-runtime", "plugin:jsx-a11y/recommended"],
+      extends: [
+        "plugin:react/jsx-runtime",
+        "plugin:jsx-a11y/recommended",
+        "prettier",
+      ],
       rules: {
         // React
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/README.md
@@ -96,6 +100,7 @@ module.exports = {
         "plugin:@typescript-eslint/stylistic",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "prettier",
       ],
       rules: {
         // React
