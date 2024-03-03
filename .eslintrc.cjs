@@ -13,6 +13,7 @@ module.exports = {
       extends: [
         "plugin:react/jsx-runtime",
         "plugin:jsx-a11y/recommended",
+        "plugin:tailwindcss/recommended",
         "prettier",
       ],
       rules: {
