@@ -24,15 +24,6 @@ updates:
     open-pull-requests-limit: 10
     commit-message:
       prefix: ci
-  - package-ecosystem: gradle
-    directory: /
-    schedule:
-      interval: daily
-      time: "07:00"
-      timezone: Asia/Tokyo
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: build
   - package-ecosystem: npm
     directory: /
     schedule:
@@ -47,6 +38,14 @@ updates:
       commitlint:
         patterns:
           - "@commitlint/*"
+      prisma:
+        patterns:
+          - "@prisma/*"
+          - prisma
+      react:
+        patterns:
+          - react
+          - react-dom
       storybook:
         patterns:
           - "@storybook/*"
