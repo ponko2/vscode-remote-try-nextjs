@@ -38,6 +38,10 @@ updates:
       commitlint:
         patterns:
           - "@commitlint/*"
+      next:
+        patterns:
+          - eslint-config-next
+          - next
       prisma:
         patterns:
           - "@prisma/*"
