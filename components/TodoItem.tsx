@@ -2,66 +2,95 @@
 
 import { deleteTodo, updateTodo } from "@/actions/todo";
 import { TodoButton } from "@/components/TodoButton";
+import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 
 type Props = {
   todo: { id: string; title: string; completed: boolean };
 };
 
-function UpdateForm({
-  todo,
-  edit,
+function TitleInput({
   onEditChange,
-}: Props & { edit: boolean; onEditChange: (edit: boolean) => void }) {
-  const [value, setValue] = useState(todo.title);
-  const titleRef = useRef<HTMLInputElement>(null);
+  ...props
+}: React.InputHTMLAttributes<HTMLInputElement> & {
+  onEditChange: (edit: boolean) => void;
+}) {
+  const ref = useRef<HTMLInputElement>(null);
+  const { pending } = useFormStatus();
   useEffect(() => {
-    if (edit) {
-      titleRef.current?.focus();
+    if (!pending) {
+      ref.current?.focus();
     }
-  }, [edit]);
+  }, [pending]);
+  useEffect(() => {
+    if (pending) {
+      onEditChange(false);
+    }
+  }, [pending, onEditChange]);
   return (
-    <form
-      action={async (formData) => {
-        await updateTodo(formData);
-        onEditChange(false);
+    <input
+      className={clsx(
+        "size-full",
+        "border",
+        "border-neutral-400",
+        "px-4",
+        "py-3",
+        "shadow-inner",
+        "focus:shadow",
+        "focus:shadow-red-400",
+        "focus:outline-none",
+      )}
+      onBlur={(event) => {
+        event.preventDefault();
+        event.currentTarget.form?.requestSubmit();
       }}
-    >
-      <input name="id" type="hidden" value={todo.id} />
-      <input
-        name="completed"
-        type="hidden"
-        value={todo.completed ? "true" : "false"}
-      />
-      <input
-        className={clsx(
-          "size-full",
-          "border",
-          "border-neutral-400",
-          "px-4",
-          "py-3",
-          "shadow-inner",
-          "focus:shadow",
-          "focus:shadow-red-400",
-          "focus:outline-none",
-        )}
-        name="title"
-        onBlur={(event) => {
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
           event.preventDefault();
           event.currentTarget.form?.requestSubmit();
-        }}
-        onChange={(event) => setValue(event.target.value)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            event.preventDefault();
-            event.currentTarget.form?.requestSubmit();
-          }
-        }}
-        ref={titleRef}
-        type="text"
-        value={value}
+        }
+      }}
+      ref={ref}
+      {...props}
+    />
+  );
+}
+
+function UpdateForm({
+  todo,
+  onEditChange,
+}: Props & { onEditChange: (edit: boolean) => void }) {
+  const [lastResult, action] = useFormState(updateTodo, null);
+  const [form, fields] = useForm({
+    defaultValue: { title: todo.title },
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: updateTodoSchema });
+    },
+  });
+  return (
+    <form action={action} {...getFormProps(form)}>
+      <input
+        value={todo.id}
+        {...getInputProps(fields.id, { type: "hidden", value: false })}
+        key={fields.id.key}
+      />
+      {todo.completed ? (
+        <input
+          value="on"
+          {...getInputProps(fields.completed, { type: "hidden", value: false })}
+          key={fields.completed.key}
+        />
+      ) : null}
+      <TitleInput
+        onEditChange={onEditChange}
+        {...getInputProps(fields.title, { type: "text" })}
+        key={fields.title.key}
       />
     </form>
   );
@@ -71,10 +100,25 @@ function ToggleForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
+  const [lastResult, action] = useFormState(updateTodo, null);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: updateTodoSchema });
+    },
+  });
   return (
-    <form action={updateTodo}>
-      <input name="id" type="hidden" value={todo.id} />
-      <input name="title" type="hidden" value={todo.title} />
+    <form action={action} {...getFormProps(form)}>
+      <input
+        value={todo.id}
+        {...getInputProps(fields.id, { type: "hidden", value: false })}
+        key={fields.id.key}
+      />
+      <input
+        value={todo.title}
+        {...getInputProps(fields.title, { type: "hidden", value: false })}
+        key={fields.title.key}
+      />
       <input
         checked={todo.completed}
         className={clsx(
@@ -86,13 +130,12 @@ function ToggleForm({
           "appearance-none",
           "outline-none",
         )}
-        name="completed"
         onChange={(event) => {
           event.preventDefault();
           event.currentTarget.form?.requestSubmit();
         }}
-        type="checkbox"
-        value="true"
+        {...getInputProps(fields.completed, { type: "checkbox", value: false })}
+        key={fields.completed.key}
       />
       <label
         className={clsx(
@@ -126,9 +169,20 @@ function ToggleForm({
 }
 
 function DeleteForm({ todo }: Props) {
+  const [lastResult, action] = useFormState(deleteTodo, null);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: deleteTodoSchema });
+    },
+  });
   return (
-    <form action={deleteTodo}>
-      <input name="id" type="hidden" value={todo.id} />
+    <form action={action} {...getFormProps(form)}>
+      <input
+        value={todo.id}
+        {...getInputProps(fields.id, { type: "hidden", value: false })}
+        key={fields.id.key}
+      />
       <TodoButton
         className={clsx(
           "absolute",
@@ -173,7 +227,7 @@ export function TodoItem({ todo }: Props) {
   if (editing) {
     return (
       <li className={list({ intent: "editing" })}>
-        <UpdateForm edit={editing} onEditChange={setEditing} todo={todo} />
+        <UpdateForm onEditChange={setEditing} todo={todo} />
       </li>
     );
   }

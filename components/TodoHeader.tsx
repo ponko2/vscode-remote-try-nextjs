@@ -1,8 +1,11 @@
 "use client";
 
 import { createTodo, toggleAllTodos } from "@/actions/todo";
+import { createTodoSchema } from "@/schemas/todo";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
 import clsx from "clsx";
-import { useRef } from "react";
+import { useFormState } from "react-dom";
 
 type Props = {
   completedTodosCount: number;
@@ -10,15 +13,15 @@ type Props = {
 };
 
 function CreateForm() {
-  const formRef = useRef<HTMLFormElement>(null);
+  const [lastResult, action] = useFormState(createTodo, null);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: createTodoSchema });
+    },
+  });
   return (
-    <form
-      action={async (formData) => {
-        await createTodo(formData);
-        formRef.current?.reset();
-      }}
-      ref={formRef}
-    >
+    <form action={action} {...getFormProps(form)}>
       <input
         className={clsx(
           "size-full",
@@ -34,7 +37,6 @@ function CreateForm() {
           "focus:shadow-red-400",
           "focus:outline-none",
         )}
-        name="title"
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             event.preventDefault();
@@ -42,7 +44,8 @@ function CreateForm() {
           }
         }}
         placeholder="What needs to be done?"
-        type="text"
+        {...getInputProps(fields.title, { type: "text" })}
+        key={fields.title.key}
       />
     </form>
   );
