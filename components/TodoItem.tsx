@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteTodo, updateTodo } from "@/actions/todos";
+import { deleteTodo, updateTodo } from "@/actions/todo";
 import { TodoButton } from "@/components/TodoButton";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";

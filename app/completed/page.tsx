@@ -1,4 +1,4 @@
-import { fetchTodos } from "@/actions/todos";
+import { fetchTodos } from "@/actions/todo";
 import { TodoList } from "@/components/TodoList";
 
 export default async function Completed() {

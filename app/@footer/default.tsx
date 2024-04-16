@@ -1,4 +1,4 @@
-import { fetchTodos } from "@/actions/todos";
+import { fetchTodos } from "@/actions/todo";
 import { TodoFooter } from "@/components/TodoFooter";
 
 export default async function Footer() {

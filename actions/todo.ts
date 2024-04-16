@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/actions/db";
+import prisma from "@/actions/database";
 import { unstable_noStore as noStore, revalidateTag } from "next/cache";
 
 export async function fetchTodos() {

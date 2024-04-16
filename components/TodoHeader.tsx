@@ -1,6 +1,6 @@
 "use client";
 
-import { createTodo, toggleAllTodos } from "@/actions/todos";
+import { createTodo, toggleAllTodos } from "@/actions/todo";
 import clsx from "clsx";
 import { useRef } from "react";
 
