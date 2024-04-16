@@ -12,6 +12,24 @@ type Props = {
   todosCount: number;
 };
 
+function CompletedForm() {
+  return (
+    <form action={deleteCompletedTodos} className="text-right">
+      <TodoButton
+        className={clsx(
+          "cursor-pointer",
+          "no-underline",
+          "hover:underline",
+          "active:no-underline",
+        )}
+        type="submit"
+      >
+        Clear completed
+      </TodoButton>
+    </form>
+  );
+}
+
 export function TodoFooter({ completedTodosCount, todosCount }: Props) {
   const pathname = usePathname();
 
@@ -85,21 +103,7 @@ export function TodoFooter({ completedTodosCount, todosCount }: Props) {
           </li>
         ))}
       </ul>
-      {!!completedTodosCount && (
-        <form action={deleteCompletedTodos} className="text-right">
-          <TodoButton
-            className={clsx(
-              "cursor-pointer",
-              "no-underline",
-              "hover:underline",
-              "active:no-underline",
-            )}
-            type="submit"
-          >
-            Clear completed
-          </TodoButton>
-        </form>
-      )}
+      {!!completedTodosCount && <CompletedForm />}
     </footer>
   );
 }
