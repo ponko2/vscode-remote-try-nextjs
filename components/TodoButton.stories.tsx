@@ -1,6 +1,6 @@
 import { TodoButton } from "@/components/TodoButton";
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 
 const meta = {
   component: TodoButton,
@@ -11,7 +11,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic = {
   args: {
-    onClick: action("clicked"),
+    onClick: fn(),
     children: "Hello, World!!",
   },
 } satisfies Story;
