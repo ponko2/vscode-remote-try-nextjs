@@ -1,6 +1,6 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 
-export default {
+const config = {
   stories: [
     "../app/**/*.mdx",
     "../app/**/*.stories.@(js|jsx|ts|tsx)",
@@ -21,3 +21,5 @@ export default {
   },
   staticDirs: ["../public"],
 } satisfies StorybookConfig;
+
+export default config;

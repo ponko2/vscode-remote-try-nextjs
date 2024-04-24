@@ -1,14 +1,14 @@
 import { TodoList } from "@/components/TodoList";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof TodoList> = {
+const meta = {
   component: TodoList,
-};
+} satisfies Meta<typeof TodoList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {
+export const Basic = {
   args: {
     todos: [
       {
@@ -28,4 +28,4 @@ export const Basic: Story = {
       },
     ],
   },
-};
+} satisfies Story;
