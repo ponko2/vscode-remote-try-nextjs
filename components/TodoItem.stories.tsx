@@ -27,7 +27,6 @@ export const Basic = {
 
 export const Completed = {
   args: {
-    ...Basic.args,
     todo: {
       id: "01FYH5XVSNVSXTSGB8KB858REF",
       title: "Hello, World!!",

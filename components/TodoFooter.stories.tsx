@@ -17,7 +17,6 @@ export const Basic = {
 
 export const HasCompleted = {
   args: {
-    ...Basic.args,
     todosCount: 2,
     completedTodosCount: 1,
   },

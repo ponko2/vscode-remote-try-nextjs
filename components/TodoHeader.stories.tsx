@@ -17,7 +17,6 @@ export const Basic = {
 
 export const HasActive = {
   args: {
-    ...Basic.args,
     todosCount: 1,
     completedTodosCount: 0,
   },
@@ -25,7 +24,6 @@ export const HasActive = {
 
 export const IsAllCompleted = {
   args: {
-    ...Basic.args,
     todosCount: 1,
     completedTodosCount: 1,
   },
