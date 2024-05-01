@@ -1,6 +1,5 @@
 "use client";
 
-import type React from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = React.DetailedHTMLProps<
