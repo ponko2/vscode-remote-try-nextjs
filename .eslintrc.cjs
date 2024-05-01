@@ -126,7 +126,6 @@ module.exports = {
     },
     {
       files: ["**/*.{ts,tsx}"],
-      excludedFiles: ["vite.config.ts", "vitest.setup.ts"],
       extends: [
         "plugin:@typescript-eslint/recommended-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked",
@@ -161,11 +160,7 @@ module.exports = {
     },
     {
       files: ["*.test.ts", "*.test.tsx"],
-      extends: [
-        "plugin:vitest/recommended",
-        "plugin:testing-library/react",
-        "prettier",
-      ],
+      extends: ["plugin:vitest/recommended", "prettier"],
       rules: {
         // Vitest
         // https://github.com/veritem/eslint-plugin-vitest
@@ -206,14 +201,6 @@ module.exports = {
 
         // Suggest using toHaveLength()
         "vitest/prefer-to-have-length": "error",
-
-        // Testing Library
-        // https://github.com/testing-library/eslint-plugin-testing-library
-        // ----------------------------------------------
-
-        // Disallow the use of cleanup
-        // Temporary workaround for https://github.com/vitest-dev/vitest/issues/1430
-        "testing-library/no-manual-cleanup": "off",
       },
     },
   ],
