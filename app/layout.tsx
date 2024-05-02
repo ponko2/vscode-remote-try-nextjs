@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -18,28 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={clsx(
-          "bg-neutral-100",
-          "text-sm",
-          "font-light",
-          "text-neutral-900",
-          "antialiased",
-        )}
-      >
-        <div className={clsx("container", "mx-auto", "min-w-60", "max-w-xl")}>
+      <body className="bg-neutral-100 text-sm font-light text-neutral-900 antialiased">
+        <div className="container mx-auto min-w-60 max-w-xl">
           <section
-            className={clsx(
-              "relative",
-              "my-10",
-              "divide-y",
-              "divide-neutral-200",
-              "bg-white",
-              "shadow-2xl",
-              "before:absolute",
-              "before:inset-x-0",
-              "before:bottom-0",
-              "before:h-12",
+            className={cn(
+              "relative my-10 divide-y divide-neutral-200 bg-white shadow-2xl",
+              "before:absolute before:inset-x-0 before:bottom-0 before:h-12",
               "before:shadow-[0_1px_1px_rgba(0,0,0,0.2),0_8px_0_-3px_#f5f5f5,0_9px_1px_-3px_rgba(0,0,0,0.2),0_16px_0_-6px_#f5f5f5,0_17px_2px_-6px_rgba(0,0,0,0.2)]",
             )}
           >
