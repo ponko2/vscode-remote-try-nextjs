@@ -1,5 +1,6 @@
-import { TodoList } from "@/components/TodoList";
+import TodoList from "@/components/TodoList";
 import type { Meta, StoryObj } from "@storybook/react";
+import { expect, within } from "@storybook/test";
 
 const meta = {
   component: TodoList,
@@ -12,20 +13,22 @@ export const Basic = {
   args: {
     todos: [
       {
-        id: "01FYH5XVSNVSXTSGB8KB858REF",
+        id: "cfc332c5-f8c2-45e1-bcdd-8e26a11c9ffc",
         title: "foo",
         completed: false,
       },
       {
-        id: "01G46BYCGQ1SGVGFMEXZ0DKZAY",
+        id: "2c1e6aab-6d91-4414-bf80-3cef026284ab",
         title: "bar",
         completed: true,
       },
-      {
-        id: "01G46BZM28F68BCY7EP016G1EZ",
-        title: "baz",
-        completed: false,
-      },
     ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkboxes = canvas.getAllByRole("checkbox");
+    await expect(checkboxes).toHaveLength(2);
+    await expect(checkboxes[0]).not.toBeChecked();
+    await expect(checkboxes[1]).toBeChecked();
   },
 } satisfies Story;

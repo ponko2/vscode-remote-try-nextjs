@@ -1,4 +1,4 @@
-import { TodoButton } from "@/components/TodoButton";
+import TodoButton from "@/components/TodoButton";
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, fn, userEvent, within } from "@storybook/test";
 
@@ -13,6 +13,10 @@ export const Basic = {
   args: {
     onClick: fn(),
     children: "Hello, World!!",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },
 } satisfies Story;
 

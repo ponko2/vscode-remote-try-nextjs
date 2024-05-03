@@ -1,7 +1,7 @@
 "use client";
 
 import { deleteTodo, updateTodo } from "@/actions/todo";
-import { TodoButton } from "@/components/TodoButton";
+import TodoButton from "@/components/TodoButton";
 import { cn } from "@/lib/utils";
 import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
@@ -165,7 +165,7 @@ function DeleteForm({ todo }: Props) {
   );
 }
 
-export function TodoItem({ todo }: Props) {
+export default function TodoItem({ todo }: Props) {
   const [editing, setEditing] = useState(false);
 
   const list = cva("relative h-16 text-2xl", {

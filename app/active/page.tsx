@@ -1,7 +1,7 @@
 import { fetchTodos } from "@/actions/todo";
-import { TodoList } from "@/components/TodoList";
+import TodoPage from "@/components/TodoPage";
 
 export default async function Active() {
   const todos = await fetchTodos();
-  return <TodoList todos={todos.filter(({ completed }) => !completed)} />;
+  return <TodoPage todos={todos} type="active" />;
 }

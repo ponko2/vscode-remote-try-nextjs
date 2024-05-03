@@ -71,7 +71,7 @@ function ToggleForm({ checked }: { checked: boolean }) {
   );
 }
 
-export function TodoHeader({ completedTodosCount, todosCount }: Props) {
+export default function TodoHeader({ completedTodosCount, todosCount }: Props) {
   return (
     <header className="relative mt-32 h-16">
       <h1 className="absolute bottom-16 w-full pb-6 text-center text-7xl/none font-extralight text-red-700 [text-rendering:optimizeLegibility]">

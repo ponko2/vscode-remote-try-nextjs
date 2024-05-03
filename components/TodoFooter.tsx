@@ -1,7 +1,7 @@
 "use client";
 
 import { deleteCompletedTodos } from "@/actions/todo";
-import { TodoButton } from "@/components/TodoButton";
+import TodoButton from "@/components/TodoButton";
 import { cva } from "class-variance-authority";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,7 +24,7 @@ function CompletedForm() {
   );
 }
 
-export function TodoFooter({ completedTodosCount, todosCount }: Props) {
+export default function TodoFooter({ completedTodosCount, todosCount }: Props) {
   const pathname = usePathname();
 
   if (todosCount <= 0) {

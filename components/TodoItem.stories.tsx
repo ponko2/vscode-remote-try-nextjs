@@ -1,5 +1,6 @@
-import { TodoItem } from "@/components/TodoItem";
+import TodoItem from "@/components/TodoItem";
 import type { Meta, StoryObj } from "@storybook/react";
+import { expect, within } from "@storybook/test";
 
 const meta = {
   component: TodoItem,
@@ -18,19 +19,29 @@ type Story = StoryObj<typeof meta>;
 export const Basic = {
   args: {
     todo: {
-      id: "01FYH5XVSNVSXTSGB8KB858REF",
+      id: "cfc332c5-f8c2-45e1-bcdd-8e26a11c9ffc",
       title: "Hello, World!!",
       completed: false,
     },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("checkbox")).not.toBeChecked();
+    await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },
 } satisfies Story;
 
 export const Completed = {
   args: {
     todo: {
-      id: "01FYH5XVSNVSXTSGB8KB858REF",
+      id: "cfc332c5-f8c2-45e1-bcdd-8e26a11c9ffc",
       title: "Hello, World!!",
       completed: true,
     },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("checkbox")).toBeChecked();
+    await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },
 } satisfies Story;
