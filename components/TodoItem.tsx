@@ -7,58 +7,17 @@ import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
-import { useEffect, useRef, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect, useRef, useState } from "react";
 
 type Props = {
   todo: { id: string; title: string; completed: boolean };
 };
 
-function TitleInput({
-  onEditChange,
-  ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & {
-  onEditChange: (edit: boolean) => void;
-}) {
-  const ref = useRef<HTMLInputElement>(null);
-  const { pending } = useFormStatus();
-  useEffect(() => {
-    if (!pending) {
-      ref.current?.focus();
-    }
-  }, [pending]);
-  useEffect(() => {
-    if (pending) {
-      onEditChange(false);
-    }
-  }, [pending, onEditChange]);
-  return (
-    <input
-      className={cn(
-        "size-full border border-neutral-400 px-4 py-3 shadow-inner",
-        "focus:shadow focus:shadow-red-400 focus:outline-none",
-      )}
-      onBlur={(event) => {
-        event.preventDefault();
-        event.currentTarget.form?.requestSubmit();
-      }}
-      onKeyDown={(event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          event.currentTarget.form?.requestSubmit();
-        }
-      }}
-      ref={ref}
-      {...props}
-    />
-  );
-}
-
 function UpdateForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [lastResult, action] = useFormState(updateTodo, null);
+  const [lastResult, action, isPending] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     defaultValue: { title: todo.title },
     lastResult,
@@ -66,6 +25,17 @@ function UpdateForm({
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
+  const titleRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (!isPending) {
+      titleRef.current?.focus();
+    }
+  }, [isPending]);
+  useEffect(() => {
+    if (isPending) {
+      onEditChange(false);
+    }
+  }, [isPending, onEditChange]);
   return (
     <form action={action} {...getFormProps(form)}>
       <input
@@ -80,8 +50,22 @@ function UpdateForm({
           key={fields.completed.key}
         />
       ) : null}
-      <TitleInput
-        onEditChange={onEditChange}
+      <input
+        className={cn(
+          "size-full border border-neutral-400 px-4 py-3 shadow-inner",
+          "focus:shadow focus:shadow-red-400 focus:outline-none",
+        )}
+        onBlur={(event) => {
+          event.preventDefault();
+          event.currentTarget.form?.requestSubmit();
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            event.currentTarget.form?.requestSubmit();
+          }
+        }}
+        ref={titleRef}
         {...getInputProps(fields.title, { type: "text" })}
         key={fields.title.key}
       />
@@ -93,7 +77,7 @@ function ToggleForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [lastResult, action] = useFormState(updateTodo, null);
+  const [lastResult, action] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -137,7 +121,7 @@ function ToggleForm({
 }
 
 function DeleteForm({ todo }: Props) {
-  const [lastResult, action] = useFormState(deleteTodo, null);
+  const [lastResult, action] = useActionState(deleteTodo, null);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
