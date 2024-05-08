@@ -45,14 +45,12 @@ updates:
         patterns:
           - eslint-config-next
           - next
+          - react
+          - react-dom
       prisma:
         patterns:
           - "@prisma/*"
           - prisma
-      react:
-        patterns:
-          - react
-          - react-dom
       storybook:
         patterns:
           - "@storybook/*"
