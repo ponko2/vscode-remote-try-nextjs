@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { createTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 
 type Props = {
   completedTodosCount: number;
@@ -13,7 +13,7 @@ type Props = {
 };
 
 function CreateForm() {
-  const [lastResult, action] = useFormState(createTodo, null);
+  const [lastResult, action] = useActionState(createTodo, null);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
