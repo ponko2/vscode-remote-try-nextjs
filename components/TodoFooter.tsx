@@ -6,10 +6,10 @@ import { cva } from "class-variance-authority";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Props = {
+interface Props {
   completedTodosCount: number;
   todosCount: number;
-};
+}
 
 function CompletedForm() {
   return (

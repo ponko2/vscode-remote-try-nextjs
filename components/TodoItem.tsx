@@ -9,9 +9,9 @@ import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
 import { useActionState, useEffect, useRef, useState } from "react";
 
-type Props = {
+interface Props {
   todo: { id: string; title: string; completed: boolean };
-};
+}
 
 function UpdateForm({
   todo,

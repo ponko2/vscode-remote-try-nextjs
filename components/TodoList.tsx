@@ -2,9 +2,9 @@
 
 import TodoItem from "@/components/TodoItem";
 
-type Props = {
+interface Props {
   todos: { id: string; title: string; completed: boolean }[];
-};
+}
 
 export default function TodoList({ todos }: Props) {
   return (

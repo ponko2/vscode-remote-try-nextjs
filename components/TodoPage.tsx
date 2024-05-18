@@ -6,10 +6,10 @@ import TodoList from "@/components/TodoList";
 import { cn } from "@/lib/utils";
 import type { Todo } from "@prisma/client";
 
-type Props = {
+interface Props {
   todos: Todo[];
   type: "all" | "active" | "completed";
-};
+}
 
 export default function TodoPage({ todos, type }: Props) {
   const todosCount = todos.length;

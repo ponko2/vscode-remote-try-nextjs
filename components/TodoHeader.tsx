@@ -7,10 +7,10 @@ import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";
 
-type Props = {
+interface Props {
   completedTodosCount: number;
   todosCount: number;
-};
+}
 
 function CreateForm() {
   const [lastResult, action] = useActionState(createTodo, null);
