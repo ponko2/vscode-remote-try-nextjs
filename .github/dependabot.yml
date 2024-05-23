@@ -53,6 +53,9 @@ updates:
         patterns:
           - react
           - react-dom
+      react-compiler:
+        patterns:
+          - "*-plugin-react-compiler"
       storybook:
         patterns:
           - "@storybook/*"
