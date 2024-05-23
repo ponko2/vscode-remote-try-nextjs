@@ -35,7 +35,7 @@
     "eslint-config-next": "^14.3.0-canary.75",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-tailwindcss": "^3.15.2",
+    "eslint-plugin-tailwindcss": "^3.16.0",
     "eslint-plugin-vitest": "^0.4.1",
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
