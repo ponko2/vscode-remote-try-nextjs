@@ -15,6 +15,7 @@ module.exports = {
       settings: {
         linkComponents: [{ name: "Link", linkAttribute: "href" }],
       },
+      plugins: ["eslint-plugin-react-compiler"],
       extends: [
         "plugin:react/jsx-runtime",
         "plugin:jsx-a11y/recommended",
@@ -97,6 +98,11 @@ module.exports = {
 
         // Disallow extra closing tags for components without children
         "react/self-closing-comp": "error",
+
+        // React Compiler
+        // https://react.dev/learn/react-compiler
+        // ----------------------------------------------
+        "react-compiler/react-compiler": "error",
       },
     },
     {
