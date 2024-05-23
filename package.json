@@ -37,7 +37,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-c8b3f72-20240517",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-tailwindcss": "^3.16.0",
+    "eslint-plugin-tailwindcss": "^3.17.0",
     "eslint-plugin-vitest": "^0.4.1",
     "husky": "^9.0.11",
     "is-ci": "^3.0.1",
