@@ -17,10 +17,10 @@ function UpdateForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [lastResult, action, isPending] = useActionState(updateTodo, null);
+  const [state, formAction, isPending] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     defaultValue: { title: todo.title },
-    lastResult,
+    lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
@@ -37,7 +37,7 @@ function UpdateForm({
     }
   }, [isPending, onEditChange]);
   return (
-    <form action={action} {...getFormProps(form)}>
+    <form action={formAction} {...getFormProps(form)}>
       <input
         value={todo.id}
         {...getInputProps(fields.id, { type: "hidden", value: false })}
@@ -77,15 +77,15 @@ function ToggleForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [lastResult, action] = useActionState(updateTodo, null);
+  const [state, formAction] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
-    lastResult,
+    lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
   return (
-    <form action={action} {...getFormProps(form)}>
+    <form action={formAction} {...getFormProps(form)}>
       <input
         value={todo.id}
         {...getInputProps(fields.id, { type: "hidden", value: false })}
@@ -121,15 +121,15 @@ function ToggleForm({
 }
 
 function DeleteForm({ todo }: Props) {
-  const [lastResult, action] = useActionState(deleteTodo, null);
+  const [state, formAction] = useActionState(deleteTodo, null);
   const [form, fields] = useForm({
-    lastResult,
+    lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: deleteTodoSchema });
     },
   });
   return (
-    <form action={action} {...getFormProps(form)}>
+    <form action={formAction} {...getFormProps(form)}>
       <input
         value={todo.id}
         {...getInputProps(fields.id, { type: "hidden", value: false })}

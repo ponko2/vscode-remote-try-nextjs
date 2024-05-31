@@ -13,15 +13,15 @@ interface Props {
 }
 
 function CreateForm() {
-  const [lastResult, action] = useActionState(createTodo, null);
+  const [state, formAction] = useActionState(createTodo, null);
   const [form, fields] = useForm({
-    lastResult,
+    lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: createTodoSchema });
     },
   });
   return (
-    <form action={action} {...getFormProps(form)}>
+    <form action={formAction} {...getFormProps(form)}>
       <input
         className={cn(
           "size-full py-4 pl-14 pr-4 text-2xl shadow-inner",
