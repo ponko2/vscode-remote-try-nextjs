@@ -32,10 +32,10 @@ function UpdateForm({
     }
   }, [isPending]);
   useEffect(() => {
-    if (isPending) {
+    if (state?.status === "success") {
       onEditChange(false);
     }
-  }, [isPending, onEditChange]);
+  }, [state, onEditChange]);
   return (
     <form action={formAction} {...getFormProps(form)}>
       <input

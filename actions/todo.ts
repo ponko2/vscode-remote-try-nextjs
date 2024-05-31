@@ -6,6 +6,7 @@ import {
   deleteTodoSchema,
   updateTodoSchema,
 } from "@/schemas/todo";
+import type { SubmissionResult } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { unstable_noStore as noStore, revalidateTag } from "next/cache";
 
@@ -21,7 +22,10 @@ export async function createTodo(_state: unknown, formData: FormData) {
   }
   await prisma.todo.create({ data: submission.value });
   revalidateTag("todos");
-  return submission.reply({ resetForm: true });
+  return {
+    status: "success",
+    ...submission.reply({ resetForm: true }),
+  } satisfies SubmissionResult;
 }
 
 export async function deleteTodo(_state: unknown, payload: FormData) {
