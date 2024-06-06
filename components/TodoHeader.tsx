@@ -49,10 +49,7 @@ function ToggleForm({ checked }: { checked: boolean }) {
         <input
           checked={checked}
           className="peer appearance-none"
-          onClick={(event) => {
-            event.preventDefault();
-            event.currentTarget.form?.requestSubmit();
-          }}
+          onClick={(event) => event.currentTarget.form?.requestSubmit()}
           readOnly
           type="checkbox"
         />
