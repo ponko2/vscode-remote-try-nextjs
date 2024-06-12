@@ -7,7 +7,7 @@ import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 
 interface Props {
   todo: { id: string; title: string; completed: boolean };
@@ -17,7 +17,7 @@ function UpdateForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [state, formAction, isPending] = useActionState(updateTodo, null);
+  const [state, formAction] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     defaultValue: { title: todo.title },
     lastResult: state,
@@ -25,12 +25,6 @@ function UpdateForm({
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
-  const titleRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (!isPending) {
-      titleRef.current?.focus();
-    }
-  }, [isPending]);
   useEffect(() => {
     if (state?.status === "success") {
       onEditChange(false);
@@ -51,6 +45,8 @@ function UpdateForm({
         />
       ) : null}
       <input
+        // eslint-disable-next-line jsx-a11y/no-autofocus
+        autoFocus
         className={cn(
           "size-full border border-neutral-400 px-4 py-3 shadow-inner",
           "focus:shadow focus:shadow-red-400 focus:outline-none",
@@ -62,7 +58,6 @@ function UpdateForm({
             event.currentTarget.form?.requestSubmit();
           }
         }}
-        ref={titleRef}
         {...getInputProps(fields.title, { type: "text" })}
         key={fields.title.key}
       />
