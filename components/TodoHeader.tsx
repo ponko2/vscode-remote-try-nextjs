@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { createTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 
 interface Props {
   completedTodosCount: number;
@@ -13,15 +13,22 @@ interface Props {
 }
 
 function CreateForm() {
-  const [state, formAction] = useActionState(createTodo, null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, isPending] = useActionState(createTodo, null);
   const [form, fields] = useForm({
+    defaultValue: { title: "" },
     lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: createTodoSchema });
     },
   });
+  useEffect(() => {
+    if (!isPending && state?.status === "success") {
+      formRef.current?.reset();
+    }
+  }, [isPending, state]);
   return (
-    <form action={formAction} {...getFormProps(form)}>
+    <form action={formAction} ref={formRef} {...getFormProps(form)}>
       <input
         className={cn(
           "size-full py-4 pl-14 pr-4 text-2xl shadow-inner",
