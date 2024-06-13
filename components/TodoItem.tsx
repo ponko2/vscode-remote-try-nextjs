@@ -7,7 +7,7 @@ import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
-import { useActionState, useEffect, useRef, useState } from "react";
+import { useActionState, useRef, useState } from "react";
 
 interface Props {
   todo: { id: string; title: string; completed: boolean };
@@ -18,20 +18,17 @@ function UpdateForm({
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
   const formRef = useRef<HTMLFormElement>(null);
-  const [state, formAction, isPending] = useActionState(updateTodo, null);
+  const [state, formAction] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     defaultValue: { title: todo.title },
     lastResult: state,
+    onSubmit() {
+      onEditChange(false);
+    },
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
-  useEffect(() => {
-    if (!isPending && state?.status === "success") {
-      formRef.current?.reset();
-      onEditChange(false);
-    }
-  }, [isPending, state, onEditChange]);
   return (
     <form action={formAction} ref={formRef} {...getFormProps(form)}>
       <input
