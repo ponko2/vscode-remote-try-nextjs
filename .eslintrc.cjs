@@ -131,7 +131,7 @@ module.exports = {
         "prettier",
       ],
       parserOptions: {
-        project: true,
+        projectService: true,
         tsconfigRootDir: __dirname,
       },
       rules: {
