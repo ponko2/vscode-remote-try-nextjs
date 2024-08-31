@@ -60,7 +60,6 @@
   "scripts": {
     "build": "next build",
     "build-storybook": "storybook build",
-    "compile": "tsc --noEmit",
     "dev": "next dev",
     "fix": "run-s fix:eslint fix:prettier fix:prisma-case fix:prisma",
     "fix:eslint": "next lint --fix",
@@ -76,6 +75,7 @@
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "test": "vitest --passWithNoTests",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "typecheck": "tsc --noEmit"
   }
 }
