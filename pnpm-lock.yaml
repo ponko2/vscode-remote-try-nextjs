@@ -25,7 +25,7 @@ importers:
         version: 2.1.1
       next:
         specifier: ^15.0.0-rc.0
-        version: 15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)
+        version: 15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)
       react:
         specifier: 19.0.0-rc.0
         version: 19.0.0-rc.0
@@ -59,7 +59,7 @@ importers:
         version: 8.3.0(react@19.0.0-rc.0)(storybook@8.3.0)
       '@storybook/nextjs':
         specifier: ^8.3.0
-        version: 8.3.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1)(next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0))(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)(storybook@8.3.0)(type-fest@4.23.0)(typescript@5.6.2)(webpack-hot-middleware@2.26.1)(webpack@5.94.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1))
+        version: 8.3.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1)(next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0))(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)(storybook@8.3.0)(type-fest@4.23.0)(typescript@5.6.2)(webpack-hot-middleware@2.26.1)(webpack@5.94.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1))
       '@storybook/react':
         specifier: ^8.3.0
         version: 8.3.0(@storybook/test@8.3.0(storybook@8.3.0))(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)(storybook@8.3.0)(typescript@5.6.2)
@@ -91,8 +91,8 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.45)
       babel-plugin-react-compiler:
-        specifier: 0.0.0-experimental-2bc6fec-20240910
-        version: 0.0.0-experimental-2bc6fec-20240910
+        specifier: 0.0.0-experimental-fe484b5-20240911
+        version: 0.0.0-experimental-fe484b5-20240911
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -103,8 +103,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0(eslint@8.57.0)
       eslint-plugin-react-compiler:
-        specifier: 0.0.0-experimental-b6997ec-20240910
-        version: 0.0.0-experimental-b6997ec-20240910(eslint@8.57.0)
+        specifier: 0.0.0-experimental-5c9a529-20240911
+        version: 0.0.0-experimental-5c9a529-20240911(eslint@8.57.0)
       eslint-plugin-storybook:
         specifier: ^0.8.0
         version: 0.8.0(eslint@8.57.0)(typescript@5.6.2)
@@ -2897,8 +2897,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
-  babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910:
-    resolution: {integrity: sha512-ktoe5CVIGdUyos1SprZiobQtx4IdNFsoUKaKf58e6NOlycNBNkDr8V/j1lmqPfwIp/dxQYIZpV04xwzpfFqFKw==}
+  babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911:
+    resolution: {integrity: sha512-68t0K1tr9/q7rs2o2RAMvU+ytI4DaqFEEnfhGD++8JCnGQhl2FZKMPi5u9BcWPYPhSCOSuWYabpj4q5owQWwNA==}
 
   babel-preset-current-node-syntax@1.0.1:
     resolution: {integrity: sha512-M7LQ0bxarkxQoN+vz5aJPsLBn77n8QgTFmo8WK0/44auK2xlCXrYcUxHFxgU7qW5Yzw/CjmLRK2uJzaCd7LvqQ==}
@@ -3804,8 +3804,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-compiler@0.0.0-experimental-b6997ec-20240910:
-    resolution: {integrity: sha512-5VLQr2Lvxo4Ktf7TKC/0cPRJIKg4F34BreQmth5vHOc1aR8I6IZ84hY7T3ci2VlrfTKOHkEDEjGfOJWSoM9aZQ==}
+  eslint-plugin-react-compiler@0.0.0-experimental-5c9a529-20240911:
+    resolution: {integrity: sha512-QZV0rNLl4bKS3PIyApBeH/3EoMVh9NgpPFJGpKpfG2WWQWF/jkb9buRSxvyNhS0zSJeSR7pTPQFsSKDXNQNMhw==}
     engines: {node: ^14.17.0 || ^16.0.0 || >= 18.0.0}
     peerDependencies:
       eslint: '>=7'
@@ -9434,7 +9434,7 @@ snapshots:
     dependencies:
       storybook: 8.3.0
 
-  '@storybook/nextjs@8.3.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1)(next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0))(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)(storybook@8.3.0)(type-fest@4.23.0)(typescript@5.6.2)(webpack-hot-middleware@2.26.1)(webpack@5.94.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1))':
+  '@storybook/nextjs@8.3.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1)(next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0))(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)(storybook@8.3.0)(type-fest@4.23.0)(typescript@5.6.2)(webpack-hot-middleware@2.26.1)(webpack@5.94.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.25.2)
@@ -9462,7 +9462,7 @@ snapshots:
       fs-extra: 11.2.0
       image-size: 1.1.1
       loader-utils: 3.3.1
-      next: 15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)
+      next: 15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.94.0(@swc/core@1.6.13(@swc/helpers@0.5.11))(esbuild@0.23.1))
       pnp-webpack-plugin: 1.7.0(typescript@5.6.2)
       postcss: 8.4.45
@@ -10567,7 +10567,7 @@ snapshots:
   babel-plugin-jest-hoist@29.6.3:
     dependencies:
       '@babel/template': 7.24.7
-      '@babel/types': 7.24.9
+      '@babel/types': 7.25.6
       '@types/babel__core': 7.20.5
       '@types/babel__traverse': 7.20.6
 
@@ -10595,7 +10595,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910:
+  babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911:
     dependencies:
       '@babel/generator': 7.2.0
       '@babel/types': 7.25.6
@@ -11729,7 +11729,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-compiler@0.0.0-experimental-b6997ec-20240910(eslint@8.57.0):
+  eslint-plugin-react-compiler@0.0.0-experimental-5c9a529-20240911(eslint@8.57.0):
     dependencies:
       '@babel/core': 7.25.2
       '@babel/parser': 7.25.6
@@ -13449,7 +13449,7 @@ snapshots:
 
   new-github-issue-url@0.2.1: {}
 
-  next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-2bc6fec-20240910)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0):
+  next@15.0.0-rc.0(@babel/core@7.25.2)(@opentelemetry/api@1.4.1)(babel-plugin-react-compiler@0.0.0-experimental-fe484b5-20240911)(react-dom@19.0.0-rc.0(react@19.0.0-rc.0))(react@19.0.0-rc.0):
     dependencies:
       '@next/env': 15.0.0-rc.0
       '@swc/helpers': 0.5.11
@@ -13471,7 +13471,7 @@ snapshots:
       '@next/swc-win32-ia32-msvc': 15.0.0-rc.0
       '@next/swc-win32-x64-msvc': 15.0.0-rc.0
       '@opentelemetry/api': 1.4.1
-      babel-plugin-react-compiler: 0.0.0-experimental-2bc6fec-20240910
+      babel-plugin-react-compiler: 0.0.0-experimental-fe484b5-20240911
       sharp: 0.33.4
     transitivePeerDependencies:
       - '@babel/core'
