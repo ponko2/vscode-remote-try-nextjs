@@ -1,6 +1,6 @@
 import TodoItem from "@/components/TodoItem";
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
+import { expect } from "@storybook/test";
 
 const meta = {
   component: TodoItem,
@@ -24,8 +24,7 @@ export const Basic = {
       completed: false,
     },
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByRole("checkbox")).not.toBeChecked();
     await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },
@@ -39,8 +38,7 @@ export const Completed = {
       completed: true,
     },
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByRole("checkbox")).toBeChecked();
     await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },

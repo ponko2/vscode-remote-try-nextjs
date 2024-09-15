@@ -1,6 +1,6 @@
 import TodoButton from "@/components/TodoButton";
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, fn, userEvent, within } from "@storybook/test";
+import { expect, fn, userEvent } from "@storybook/test";
 
 const meta = {
   component: TodoButton,
@@ -14,16 +14,14 @@ export const Basic = {
     onClick: fn(),
     children: "Hello, World!!",
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByText("Hello, World!!")).toBeInTheDocument();
   },
 } satisfies Story;
 
 export const Click = {
   ...Basic,
-  play: async ({ args, canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ args, canvas }) => {
     await userEvent.click(canvas.getByRole("button"));
     await expect(args.onClick).toHaveBeenCalledTimes(1);
   },
