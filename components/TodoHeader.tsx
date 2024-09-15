@@ -23,7 +23,7 @@ function CreateForm() {
     },
   });
   useEffect(() => {
-    if (!isPending && state?.status === "success") {
+    if (!isPending && state?.status !== "error") {
       formRef.current?.reset();
     }
   }, [isPending, state]);
@@ -43,7 +43,6 @@ function CreateForm() {
         }}
         placeholder="What needs to be done?"
         {...getInputProps(fields.title, { type: "text" })}
-        key={fields.title.key}
       />
     </form>
   );
