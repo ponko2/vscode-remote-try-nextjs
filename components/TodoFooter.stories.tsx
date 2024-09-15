@@ -1,6 +1,6 @@
 import TodoFooter from "@/components/TodoFooter";
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
+import { expect } from "@storybook/test";
 
 const meta = {
   component: TodoFooter,
@@ -14,8 +14,7 @@ export const Basic = {
     todosCount: 1,
     completedTodosCount: 1,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByText("0")).toBeInTheDocument();
   },
 } satisfies Story;
@@ -25,8 +24,7 @@ export const HasCompleted = {
     todosCount: 2,
     completedTodosCount: 1,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByText("1")).toBeInTheDocument();
   },
 } satisfies Story;

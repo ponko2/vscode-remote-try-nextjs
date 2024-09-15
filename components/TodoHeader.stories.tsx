@@ -1,6 +1,6 @@
 import TodoHeader from "@/components/TodoHeader";
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
+import { expect } from "@storybook/test";
 
 const meta = {
   component: TodoHeader,
@@ -14,8 +14,7 @@ export const Basic = {
     todosCount: 0,
     completedTodosCount: 0,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.queryByRole("checkbox")).toBeNull();
   },
 } satisfies Story;
@@ -25,8 +24,7 @@ export const HasActive = {
     todosCount: 1,
     completedTodosCount: 0,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByRole("checkbox")).not.toBeChecked();
   },
 } satisfies Story;
@@ -36,8 +34,7 @@ export const IsAllCompleted = {
     todosCount: 1,
     completedTodosCount: 1,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+  play: async ({ canvas }) => {
     await expect(canvas.getByRole("checkbox")).toBeChecked();
   },
 } satisfies Story;
