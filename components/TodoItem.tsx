@@ -7,7 +7,7 @@ import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { cva } from "class-variance-authority";
-import { useActionState, useRef, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 
 interface Props {
   todo: { id: string; title: string; completed: boolean };
@@ -18,9 +18,9 @@ function UpdateForm({
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
   const formRef = useRef<HTMLFormElement>(null);
-  const [state, formAction] = useActionState(updateTodo, null);
+  const [state, formAction, isPending] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
-    defaultValue: { title: todo.title },
+    defaultValue: { ...todo, completed: todo.completed ? "on" : null },
     lastResult: state,
     onSubmit() {
       onEditChange(false);
@@ -29,19 +29,16 @@ function UpdateForm({
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
+  useEffect(() => {
+    if (!isPending && state?.status !== "error") {
+      formRef.current?.reset();
+    }
+  }, [isPending, state, todo]);
   return (
     <form action={formAction} ref={formRef} {...getFormProps(form)}>
-      <input
-        value={todo.id}
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
-      />
+      <input {...getInputProps(fields.id, { type: "hidden" })} />
       {todo.completed ? (
-        <input
-          value="on"
-          {...getInputProps(fields.completed, { type: "hidden", value: false })}
-          key={fields.completed.key}
-        />
+        <input {...getInputProps(fields.completed, { type: "hidden" })} />
       ) : null}
       <input
         // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -58,7 +55,6 @@ function UpdateForm({
           }
         }}
         {...getInputProps(fields.title, { type: "text" })}
-        key={fields.title.key}
       />
     </form>
   );
@@ -68,31 +64,28 @@ function ToggleForm({
   todo,
   onEditChange,
 }: Props & { onEditChange: (edit: boolean) => void }) {
-  const [state, formAction] = useActionState(updateTodo, null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, isPending] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
+    defaultValue: { ...todo, completed: todo.completed ? "on" : null },
     lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: updateTodoSchema });
     },
   });
+  useEffect(() => {
+    if (!isPending && state?.status !== "error") {
+      formRef.current?.reset();
+    }
+  }, [isPending, state, todo]);
   return (
-    <form action={formAction} {...getFormProps(form)}>
+    <form action={formAction} ref={formRef} {...getFormProps(form)}>
+      <input {...getInputProps(fields.id, { type: "hidden" })} />
+      <input {...getInputProps(fields.title, { type: "hidden" })} />
       <input
-        value={todo.id}
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
-      />
-      <input
-        value={todo.title}
-        {...getInputProps(fields.title, { type: "hidden", value: false })}
-        key={fields.title.key}
-      />
-      <input
-        checked={todo.completed}
         className="peer absolute inset-y-0 my-auto size-12 appearance-none outline-none"
         onChange={(event) => event.currentTarget.form?.requestSubmit()}
-        {...getInputProps(fields.completed, { type: "checkbox", value: false })}
-        key={fields.completed.key}
+        {...getInputProps(fields.completed, { type: "checkbox" })}
       />
       <label
         className={cn(
@@ -109,20 +102,23 @@ function ToggleForm({
 }
 
 function DeleteForm({ todo }: Props) {
-  const [state, formAction] = useActionState(deleteTodo, null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, isPending] = useActionState(deleteTodo, null);
   const [form, fields] = useForm({
+    defaultValue: todo,
     lastResult: state,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: deleteTodoSchema });
     },
   });
+  useEffect(() => {
+    if (!isPending && state?.status !== "error") {
+      formRef.current?.reset();
+    }
+  }, [isPending, state, todo]);
   return (
-    <form action={formAction} {...getFormProps(form)}>
-      <input
-        value={todo.id}
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
-      />
+    <form action={formAction} ref={formRef} {...getFormProps(form)}>
+      <input {...getInputProps(fields.id, { type: "hidden" })} />
       <TodoButton
         className={cn(
           "absolute inset-y-0 right-2.5 my-auto hidden size-10 text-3xl text-neutral-400 transition-colors duration-200 ease-out",
