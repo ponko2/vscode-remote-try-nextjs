@@ -43,6 +43,7 @@ function CreateForm() {
         }}
         placeholder="What needs to be done?"
         {...getInputProps(fields.title, { type: "text" })}
+        key={fields.title.key}
       />
     </form>
   );
