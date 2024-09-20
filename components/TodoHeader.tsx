@@ -23,18 +23,20 @@ function CreateForm() {
     },
   });
   useEffect(() => {
-    if (!isPending && state?.status !== "error") {
+    if (!isPending && state?.status === "success") {
       formRef.current?.reset();
     }
   }, [isPending, state]);
   return (
-    <form action={formAction} ref={formRef} {...getFormProps(form)}>
+    <form {...getFormProps(form)} action={formAction} ref={formRef}>
       <input
+        {...getInputProps(fields.title, { type: "text" })}
         className={cn(
           "size-full py-4 pl-14 pr-4 text-2xl shadow-inner",
           "placeholder:font-normal placeholder:italic placeholder:text-black/40",
           "focus:shadow focus:shadow-red-400 focus:outline-none",
         )}
+        key={fields.title.key}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             event.preventDefault();
@@ -42,8 +44,6 @@ function CreateForm() {
           }
         }}
         placeholder="What needs to be done?"
-        {...getInputProps(fields.title, { type: "text" })}
-        key={fields.title.key}
       />
     </form>
   );
