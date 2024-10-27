@@ -128,8 +128,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
       playwright:
-        specifier: ^1.48.1
-        version: 1.48.1
+        specifier: ^1.48.2
+        version: 1.48.2
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
@@ -5333,18 +5333,18 @@ packages:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
     engines: {node: '>=14.16'}
 
-  playwright-core@1.48.0:
-    resolution: {integrity: sha512-RBvzjM9rdpP7UUFrQzRwR8L/xR4HyC1QXMzGYTbf1vjw25/ya9NRAVnXi/0fvFopjebvyPzsmoK58xxeEOaVvA==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   playwright-core@1.48.1:
     resolution: {integrity: sha512-Yw/t4VAFX/bBr1OzwCuOMZkY1Cnb4z/doAFSwf4huqAGWmf9eMNjmK7NiOljCdLmxeRYcGPPmcDgU0zOlzP0YA==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.48.1:
-    resolution: {integrity: sha512-j8CiHW/V6HxmbntOfyB4+T/uk08tBy6ph0MpBXwuoofkSnLmlfdYNNkFTYD6ofzzlSqLA1fwH4vwvVFvJgLN0w==}
+  playwright-core@1.48.2:
+    resolution: {integrity: sha512-sjjw+qrLFlriJo64du+EK0kJgZzoQPsabGF4lBvsid+3CNIZIYLgnMj9V6JY5VhM2Peh20DJWIVpVljLLnlawA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.48.2:
+    resolution: {integrity: sha512-NjYvYgp4BPmiwfe31j4gHLa3J7bD2WiBz8Lk2RoSsmX38SVIARZ18VYjxLjAcDsAhA+F4iSEXTSGgjua0rrlgQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9081,7 +9081,7 @@ snapshots:
       jest-serializer-html: 7.1.0
       jest-watch-typeahead: 2.2.2(jest@29.7.0(@types/node@22.7.9))
       nyc: 15.1.0
-      playwright: 1.48.1
+      playwright: 1.48.2
     transitivePeerDependencies:
       - '@swc/helpers'
       - '@types/node'
@@ -12285,7 +12285,7 @@ snapshots:
       jest-process-manager: 0.4.0
       jest-runner: 29.7.0
       nyc: 15.1.0
-      playwright-core: 1.48.0
+      playwright-core: 1.48.1
       rimraf: 3.0.2
       uuid: 8.3.2
     transitivePeerDependencies:
@@ -13196,13 +13196,13 @@ snapshots:
     dependencies:
       find-up: 6.3.0
 
-  playwright-core@1.48.0: {}
-
   playwright-core@1.48.1: {}
 
-  playwright@1.48.1:
+  playwright-core@1.48.2: {}
+
+  playwright@1.48.2:
     dependencies:
-      playwright-core: 1.48.1
+      playwright-core: 1.48.2
     optionalDependencies:
       fsevents: 2.3.2
 
