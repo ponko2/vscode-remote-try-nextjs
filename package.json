@@ -36,7 +36,7 @@
     "eslint-config-next": "^15.0.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-compiler": "19.0.0-beta-9ee70a1-20241017",
-    "eslint-plugin-storybook": "^0.10.1",
+    "eslint-plugin-storybook": "^0.10.2",
     "eslint-plugin-tailwindcss": "^3.17.5",
     "eslint-plugin-vitest": "^0.4.1",
     "husky": "^9.1.6",
