@@ -8,8 +8,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "next": "^15.0.2",
-    "react": "19.0.0-rc-7c8e5e7a-20241101",
-    "react-dom": "19.0.0-rc-7c8e5e7a-20241101",
+    "react": "19.0.0-rc-4d577fd2-20241104",
+    "react-dom": "19.0.0-rc-4d577fd2-20241104",
     "remeda": "^2.16.0",
     "tailwind-merge": "^2.5.4",
     "zod": "^3.23.8"
