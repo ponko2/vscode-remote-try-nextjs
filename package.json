@@ -23,7 +23,7 @@
     "@storybook/nextjs": "^8.4.7",
     "@storybook/react": "^8.4.7",
     "@storybook/test": "^8.4.7",
-    "@storybook/test-runner": "^0.20.1",
+    "@storybook/test-runner": "^0.21.0",
     "@tsconfig/next": "^2.0.3",
     "@tsconfig/strictest": "^2.0.5",
     "@types/node": "^22.10.2",
@@ -55,7 +55,7 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@9.15.1",
   "private": true,
   "scripts": {
     "build": "next build",
