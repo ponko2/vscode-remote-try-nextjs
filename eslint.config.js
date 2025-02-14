@@ -1,3 +1,7 @@
+/* eslint-disable import/no-named-as-default-member */
+
+import { includeIgnoreFile } from "@eslint/compat";
+import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import vitest from "@vitest/eslint-plugin";
 import prettier from "eslint-config-prettier";
@@ -7,19 +11,20 @@ import react from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import storybook from "eslint-plugin-storybook";
 import tailwind from "eslint-plugin-tailwindcss";
-import tseslint from "typescript-eslint";
-import { dirname } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
+const gitignorePath = path.resolve(__dirname, ".gitignore");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
 export default tseslint.config(
+  includeIgnoreFile(gitignorePath),
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
@@ -235,6 +240,16 @@ export default tseslint.config(
       // enforce that all tests are in a top-level describe
       "vitest/require-top-level-describe": "error",
     },
+  },
+  {
+    files: ["*.js"],
+    rules: {
+      "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
+    files: ["*.js", ".husky/**/*", ".storybook/**/*"],
+    ...tseslint.configs.disableTypeChecked,
   },
   prettier,
 );
