@@ -83,5 +83,6 @@
     "test": "vitest --passWithNoTests",
     "test-storybook": "test-storybook",
     "typecheck": "tsc --noEmit"
-  }
+  },
+  "type": "module"
 }
