@@ -27,8 +27,12 @@ export default tseslint.config(
   includeIgnoreFile(gitignorePath),
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   eslint.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
-  tseslint.configs.stylisticTypeChecked,
+  tseslint.configs.recommendedTypeChecked.filter(
+    ({ name }) => name !== "typescript-eslint/base",
+  ),
+  tseslint.configs.stylisticTypeChecked.filter(
+    ({ name }) => name !== "typescript-eslint/base",
+  ),
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
   reactCompiler.configs.recommended,
