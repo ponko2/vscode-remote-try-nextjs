@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { createTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useRef } from "react";
 
 interface Props {
   completedTodosCount: number;
@@ -14,7 +14,7 @@ interface Props {
 
 function CreateForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const [state, formAction, isPending] = useActionState(createTodo, null);
+  const [state, formAction] = useActionState(createTodo, null);
   const [form, fields] = useForm({
     defaultValue: { title: "" },
     lastResult: state,
@@ -22,11 +22,6 @@ function CreateForm() {
       return parseWithZod(formData, { schema: createTodoSchema });
     },
   });
-  useEffect(() => {
-    if (!isPending && state?.status === "success") {
-      formRef.current?.reset();
-    }
-  }, [isPending, state]);
   return (
     <form {...getFormProps(form)} action={formAction} ref={formRef}>
       <input
@@ -36,7 +31,6 @@ function CreateForm() {
           "placeholder:font-normal placeholder:italic placeholder:text-black/40",
           "focus:shadow focus:shadow-red-400 focus:outline-none",
         )}
-        key={fields.title.key}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
             event.preventDefault();

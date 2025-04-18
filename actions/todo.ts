@@ -21,7 +21,7 @@ export async function createTodo(_state: unknown, formData: FormData) {
   }
   await prisma.todo.create({ data: submission.value });
   revalidateTag("todos");
-  return submission.reply();
+  return submission.reply({ resetForm: true });
 }
 
 export async function deleteTodo(_state: unknown, payload: FormData) {
@@ -31,7 +31,7 @@ export async function deleteTodo(_state: unknown, payload: FormData) {
   }
   await prisma.todo.delete({ where: { id: submission.value.id } });
   revalidateTag("todos");
-  return submission.reply();
+  return submission.reply({ resetForm: true });
 }
 
 export async function updateTodo(_state: unknown, payload: FormData) {
@@ -49,7 +49,7 @@ export async function updateTodo(_state: unknown, payload: FormData) {
     await prisma.todo.delete({ where: { id } });
   }
   revalidateTag("todos");
-  return submission.reply();
+  return submission.reply({ resetForm: true });
 }
 
 export async function toggleAllTodos() {

@@ -33,13 +33,11 @@ function UpdateForm({
     <form {...getFormProps(form)} action={formAction} ref={formRef}>
       <input
         {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
         value={todo.id}
       />
       {todo.completed ? (
         <input
           {...getInputProps(fields.completed, { type: "hidden", value: false })}
-          key={fields.completed.key}
           value="on"
         />
       ) : null}
@@ -51,7 +49,6 @@ function UpdateForm({
           "size-full border border-neutral-400 px-4 py-3 shadow-inner",
           "focus:shadow focus:shadow-red-400 focus:outline-none",
         )}
-        key={fields.title.key}
         onBlur={(event) => event.currentTarget.form?.requestSubmit()}
         onKeyDown={(event) => {
           if (event.key === "Enter") {
@@ -80,19 +77,16 @@ function ToggleForm({
     <form {...getFormProps(form)} action={formAction}>
       <input
         {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
         value={todo.id}
       />
       <input
         {...getInputProps(fields.title, { type: "hidden", value: false })}
-        key={fields.title.key}
         value={todo.title}
       />
       <input
         {...getInputProps(fields.completed, { type: "checkbox", value: false })}
         checked={todo.completed}
         className="peer absolute inset-y-0 my-auto size-12 appearance-none outline-none"
-        key={fields.completed.key}
         onChange={(event) => event.currentTarget.form?.requestSubmit()}
       />
       <label
@@ -122,7 +116,6 @@ function DeleteForm({ todo }: Props) {
     <form {...getFormProps(form)} action={formAction}>
       <input
         {...getInputProps(fields.id, { type: "hidden", value: false })}
-        key={fields.id.key}
         value={todo.id}
       />
       <TodoButton
