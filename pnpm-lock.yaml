@@ -13,7 +13,7 @@ importers:
         version: 1.6.0(react@19.1.0)
       '@conform-to/zod':
         specifier: ^1.6.0
-        version: 1.6.0(zod@3.25.27)
+        version: 1.6.0(zod@3.25.28)
       '@prisma/client':
         specifier: ^6.8.2
         version: 6.8.2(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)
@@ -39,8 +39,8 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
       zod:
-        specifier: ^3.25.27
-        version: 3.25.27
+        specifier: ^3.25.28
+        version: 3.25.28
     devDependencies:
       '@commitlint/cli':
         specifier: 19.8.1
@@ -6702,8 +6702,8 @@ packages:
     peerDependencies:
       zod: ^3.24.4
 
-  zod@3.25.27:
-    resolution: {integrity: sha512-xkYsE+ztNLzBeoAG8Ipd2ICr86gyMpovQlB+Vid1LT7V16/Dj0z+Up1u1qxNX58cmJ/AtG2mvGw/7+jK48xEYw==}
+  zod@3.25.28:
+    resolution: {integrity: sha512-/nt/67WYKnr5by3YS7LroZJbtcCBurDKKPBPWWzaxvVCGuG/NOsiKkrjoOhI8mJ+SQUXEbUzeB3S+6XDUEEj7Q==}
 
 snapshots:
 
@@ -7652,10 +7652,10 @@ snapshots:
       '@conform-to/dom': 1.6.0
       react: 19.1.0
 
-  '@conform-to/zod@1.6.0(zod@3.25.27)':
+  '@conform-to/zod@1.6.0(zod@3.25.28)':
     dependencies:
       '@conform-to/dom': 1.6.0
-      zod: 3.25.27
+      zod: 3.25.28
 
   '@emnapi/core@1.4.3':
     dependencies:
@@ -10735,8 +10735,8 @@ snapshots:
       '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.27.1)
       eslint: 9.27.0(jiti@2.4.2)
       hermes-parser: 0.25.1
-      zod: 3.25.27
-      zod-validation-error: 3.4.1(zod@3.25.27)
+      zod: 3.25.28
+      zod-validation-error: 3.4.1(zod@3.25.28)
     transitivePeerDependencies:
       - supports-color
 
@@ -14356,8 +14356,8 @@ snapshots:
       compress-commons: 4.1.2
       readable-stream: 3.6.2
 
-  zod-validation-error@3.4.1(zod@3.25.27):
+  zod-validation-error@3.4.1(zod@3.25.28):
     dependencies:
-      zod: 3.25.27
+      zod: 3.25.28
 
-  zod@3.25.27: {}
+  zod@3.25.28: {}
