@@ -4,7 +4,7 @@ import { createTodo, toggleAllTodos } from "@/actions/todo";
 import { cn } from "@/lib/utils";
 import { createTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
+import { parseWithZod } from "@conform-to/zod/v4";
 import { useActionState, useRef } from "react";
 
 interface Props {
