@@ -5,7 +5,7 @@ import TodoButton from "@/components/TodoButton";
 import { cn } from "@/lib/utils";
 import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
+import { parseWithZod } from "@conform-to/zod/v4";
 import { cva } from "class-variance-authority";
 import { useActionState, useRef, useState } from "react";
 

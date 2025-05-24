@@ -6,7 +6,7 @@ import {
   deleteTodoSchema,
   updateTodoSchema,
 } from "@/schemas/todo";
-import { parseWithZod } from "@conform-to/zod";
+import { parseWithZod } from "@conform-to/zod/v4";
 import { unstable_noStore as noStore, revalidateTag } from "next/cache";
 
 export async function fetchTodos() {
