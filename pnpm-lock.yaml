@@ -33,7 +33,7 @@ importers:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
       remeda:
-        specifier: ^2.21.9
+        specifier: ^2.22.1
         version: 2.22.1
       tailwind-merge:
         specifier: ^2.6.0
