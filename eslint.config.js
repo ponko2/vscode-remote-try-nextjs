@@ -10,7 +10,6 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import storybook from "eslint-plugin-storybook";
-import tailwind from "eslint-plugin-tailwindcss";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import tseslint from "typescript-eslint";
@@ -37,7 +36,6 @@ export default tseslint.config(
   react.configs.flat["jsx-runtime"],
   reactCompiler.configs.recommended,
   ...storybook.configs["flat/recommended"],
-  ...tailwind.configs["flat/recommended"],
   {
     languageOptions: {
       parserOptions: {
