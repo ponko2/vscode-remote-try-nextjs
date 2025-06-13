@@ -12,6 +12,23 @@ const dirname =
 export default defineWorkspace([
   "vitest.config.ts",
   {
+    optimizeDeps: {
+      include: [
+        "@conform-to/react",
+        "@conform-to/zod/v4",
+        "@prisma/client",
+        "@storybook/nextjs-vite",
+        "class-variance-authority",
+        "clsx",
+        "next/cache",
+        "next/link",
+        "next/navigation",
+        "react",
+        "storybook/test",
+        "tailwind-merge",
+        "zod/v4",
+      ],
+    },
     plugins: [
       // The plugin will run tests for the stories defined in your Storybook config
       // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
