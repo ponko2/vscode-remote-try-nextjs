@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/nextjs";
+import type { StorybookConfig } from "@storybook/nextjs-vite";
 
 const config = {
   stories: [
@@ -8,16 +8,14 @@ const config = {
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
     "@storybook/addon-links",
+    "@storybook/addon-vitest",
   ],
   framework: {
-    name: "@storybook/nextjs",
+    name: "@storybook/nextjs-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
   staticDirs: ["../public"],
 } satisfies StorybookConfig;
