@@ -1,6 +1,6 @@
 import TodoButton from "@/components/TodoButton";
-import type { Meta, StoryObj } from "@storybook/react";
-import { expect, fn, userEvent } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { expect, fn } from "storybook/test";
 
 const meta = {
   component: TodoButton,
@@ -21,7 +21,7 @@ export const Basic = {
 
 export const Click = {
   ...Basic,
-  play: async ({ args, canvas }) => {
+  play: async ({ args, canvas, userEvent }) => {
     await userEvent.click(canvas.getByRole("button"));
     await expect(args.onClick).toHaveBeenCalledTimes(1);
   },
