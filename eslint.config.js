@@ -10,6 +10,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import storybook from "eslint-plugin-storybook";
+import { defineConfig } from "eslint/config";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import tseslint from "typescript-eslint";
@@ -22,7 +23,7 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-export default tseslint.config(
+export default defineConfig(
   includeIgnoreFile(gitignorePath),
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   eslint.configs.recommended,
