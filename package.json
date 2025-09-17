@@ -2,8 +2,8 @@
   "name": "vscode-remote-try-nextjs",
   "version": "0.1.0",
   "dependencies": {
-    "@conform-to/react": "^1.9.1",
-    "@conform-to/zod": "^1.9.1",
+    "@conform-to/react": "^1.10.0",
+    "@conform-to/zod": "^1.10.0",
     "@prisma/client": "^6.16.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
