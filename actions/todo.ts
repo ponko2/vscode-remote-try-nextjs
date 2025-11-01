@@ -7,7 +7,7 @@ import {
   updateTodoSchema,
 } from "@/schemas/todo";
 import { parseWithZod } from "@conform-to/zod/v4";
-import { unstable_noStore as noStore, revalidateTag } from "next/cache";
+import { unstable_noStore as noStore, updateTag } from "next/cache";
 
 export async function fetchTodos() {
   noStore();
@@ -20,7 +20,7 @@ export async function createTodo(_state: unknown, formData: FormData) {
     return submission.reply();
   }
   await prisma.todo.create({ data: submission.value });
-  revalidateTag("todos");
+  updateTag("todos");
   return submission.reply({ resetForm: true });
 }
 
@@ -30,7 +30,7 @@ export async function deleteTodo(_state: unknown, payload: FormData) {
     return submission.reply();
   }
   await prisma.todo.delete({ where: { id: submission.value.id } });
-  revalidateTag("todos");
+  updateTag("todos");
   return submission.reply({ resetForm: true });
 }
 
@@ -48,7 +48,7 @@ export async function updateTodo(_state: unknown, payload: FormData) {
   } else {
     await prisma.todo.delete({ where: { id } });
   }
-  revalidateTag("todos");
+  updateTag("todos");
   return submission.reply({ resetForm: true });
 }
 
@@ -56,7 +56,7 @@ export async function toggleAllTodos() {
   const todos = await fetchTodos();
   const completed = !todos.every((todo) => todo.completed);
   await prisma.todo.updateMany({ data: { completed } });
-  revalidateTag("todos");
+  updateTag("todos");
 }
 
 export async function deleteCompletedTodos() {
@@ -68,5 +68,5 @@ export async function deleteCompletedTodos() {
       },
     },
   });
-  revalidateTag("todos");
+  updateTag("todos");
 }

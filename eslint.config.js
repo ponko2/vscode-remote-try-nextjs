@@ -1,15 +1,15 @@
 // @ts-check
-/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default-member, import/no-unresolved */
 
 import { includeIgnoreFile } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import vitest from "@vitest/eslint-plugin";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import prettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
-import reactCompiler from "eslint-plugin-react-compiler";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig } from "eslint/config";
 import path from "node:path";
@@ -20,13 +20,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const gitignorePath = path.resolve(__dirname, ".gitignore");
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
 export default defineConfig(
+  ...nextVitals,
+  ...nextTs,
   includeIgnoreFile(gitignorePath),
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
   eslint.configs.recommended,
   tseslint.configs.recommendedTypeChecked.filter(
     ({ name }) => name !== "typescript-eslint/base",
@@ -36,7 +33,6 @@ export default defineConfig(
   ),
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
-  reactCompiler.configs.recommended,
   ...storybook.configs["flat/recommended"],
   {
     languageOptions: {
