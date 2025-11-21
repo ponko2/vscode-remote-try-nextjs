@@ -10,6 +10,7 @@ import prettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
+import reactYouMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import storybook from "eslint-plugin-storybook";
 import { defineConfig } from "eslint/config";
 import path from "node:path";
@@ -33,6 +34,7 @@ export default defineConfig(
   ),
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
+  reactYouMightNotNeedAnEffect.configs.recommended,
   ...storybook.configs["flat/recommended"],
   {
     languageOptions: {
