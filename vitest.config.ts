@@ -7,7 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const isVitest = process.env["VITEST"] === "true";
+const isVitest = process.env.VITEST === "true";
 const isStorybook = process.argv[1]?.includes("storybook");
 
 // https://vitejs.dev/config/
