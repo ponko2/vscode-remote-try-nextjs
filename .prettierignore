@@ -1,3 +1,4 @@
 *.md
+generated/
 pnpm-lock.yaml
 storybook-static

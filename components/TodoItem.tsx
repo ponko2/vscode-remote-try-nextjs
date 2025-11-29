@@ -91,7 +91,7 @@ function ToggleForm({
       />
       <label
         className={cn(
-          "bg-unchecked block h-full bg-left bg-no-repeat py-4 pr-4 pl-14 leading-tight font-normal break-words text-neutral-700 transition-colors duration-500",
+          "bg-unchecked block h-full bg-left bg-no-repeat py-4 pr-4 pl-14 leading-tight font-normal wrap-break-word text-neutral-700 transition-colors duration-500",
           "peer-checked:bg-checked peer-checked:text-neutral-400 peer-checked:line-through",
           "peer-focus:shadow-sm peer-focus:shadow-red-400 peer-focus:outline-hidden",
         )}

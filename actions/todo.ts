@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/actions/database";
+import { prisma } from "@/actions/database";
 import {
   createTodoSchema,
   deleteTodoSchema,

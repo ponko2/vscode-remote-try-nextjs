@@ -1,5 +1,5 @@
 // @ts-check
-/* eslint-disable import/no-named-as-default-member, import/no-unresolved */
+/* eslint-disable import/no-named-as-default-member */
 
 import { includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";

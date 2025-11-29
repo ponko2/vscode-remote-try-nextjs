@@ -3,8 +3,8 @@
 import TodoFooter from "@/components/TodoFooter";
 import TodoHeader from "@/components/TodoHeader";
 import TodoList from "@/components/TodoList";
+import type { Todo } from "@/generated/prisma/client";
 import { cn } from "@/lib/utils";
-import type { Todo } from "@prisma/client";
 
 interface Props {
   todos: Todo[];
