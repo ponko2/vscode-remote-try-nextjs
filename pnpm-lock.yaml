@@ -24,7 +24,7 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1(prisma@7.0.1(@types/react@19.2.7)(better-sqlite3@12.5.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)
       better-sqlite3:
-        specifier: ^12.4.6
+        specifier: ^12.5.0
         version: 12.5.0
       class-variance-authority:
         specifier: ^0.7.1
