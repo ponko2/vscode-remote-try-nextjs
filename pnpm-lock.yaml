@@ -42,8 +42,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
       remeda:
-        specifier: ^2.33.1
-        version: 2.33.1
+        specifier: ^2.33.2
+        version: 2.33.3
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.4.0
@@ -4125,8 +4125,8 @@ packages:
   remeda@2.21.3:
     resolution: {integrity: sha512-XXrZdLA10oEOQhLLzEJEiFFSKi21REGAkHdImIb4rt/XXy8ORGXh5HCcpUOsElfPNDb+X6TA/+wkh+p2KffYmg==}
 
-  remeda@2.33.1:
-    resolution: {integrity: sha512-404Eba/HI/blNfbebo586OjEnAhq/x5jN1aIfK4gHnjAP7SADaRfDdIjo8Acpz7hkXgM06MPTwu4IbXamvM9Qw==}
+  remeda@2.33.3:
+    resolution: {integrity: sha512-lZne8IOVPnyZApub61z13+iAD7Wr80JdlThr9iUcYjZdZvSBDvRrmJIZsqSKGnI5zJr/zt6ppIEJgZM15X6KjQ==}
 
   replace-string@3.1.0:
     resolution: {integrity: sha512-yPpxc4ZR2makceA9hy/jHNqc7QVkd4Je/N0WRHm6bs3PtivPuPynxE5ejU/mp5EhnCv8+uZL7vhz8rkluSlx+Q==}
@@ -8935,7 +8935,7 @@ snapshots:
     dependencies:
       type-fest: 4.41.0
 
-  remeda@2.33.1: {}
+  remeda@2.33.3: {}
 
   replace-string@3.1.0: {}
 
