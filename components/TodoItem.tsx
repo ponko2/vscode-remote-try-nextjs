@@ -1,22 +1,20 @@
 "use client";
 
-import { deleteTodo, updateTodo } from "@/actions/todo";
-import TodoButton from "@/components/TodoButton";
-import { cn } from "@/lib/utils";
-import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
 import { cva } from "class-variance-authority";
 import { useActionState, useRef, useState } from "react";
 
+import { deleteTodo, updateTodo } from "@/actions/todo";
+import TodoButton from "@/components/TodoButton";
+import { cn } from "@/lib/utils";
+import { deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
+
 interface Props {
   todo: { id: string; title: string; completed: boolean };
 }
 
-function UpdateForm({
-  todo,
-  onEditChange,
-}: Props & { onEditChange: (edit: boolean) => void }) {
+function UpdateForm({ todo, onEditChange }: Props & { onEditChange: (edit: boolean) => void }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
@@ -31,15 +29,9 @@ function UpdateForm({
   });
   return (
     <form {...getFormProps(form)} action={formAction} ref={formRef}>
-      <input
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        value={todo.id}
-      />
+      <input {...getInputProps(fields.id, { type: "hidden", value: false })} value={todo.id} />
       {todo.completed ? (
-        <input
-          {...getInputProps(fields.completed, { type: "hidden", value: false })}
-          value="on"
-        />
+        <input {...getInputProps(fields.completed, { type: "hidden", value: false })} value="on" />
       ) : null}
       <input
         {...getInputProps(fields.title, { type: "text" })}
@@ -61,10 +53,7 @@ function UpdateForm({
   );
 }
 
-function ToggleForm({
-  todo,
-  onEditChange,
-}: Props & { onEditChange: (edit: boolean) => void }) {
+function ToggleForm({ todo, onEditChange }: Props & { onEditChange: (edit: boolean) => void }) {
   const [state, formAction] = useActionState(updateTodo, null);
   const [form, fields] = useForm({
     defaultValue: { ...todo, completed: todo.completed ? "on" : null },
@@ -75,10 +64,7 @@ function ToggleForm({
   });
   return (
     <form {...getFormProps(form)} action={formAction}>
-      <input
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        value={todo.id}
-      />
+      <input {...getInputProps(fields.id, { type: "hidden", value: false })} value={todo.id} />
       <input
         {...getInputProps(fields.title, { type: "hidden", value: false })}
         value={todo.title}
@@ -114,10 +100,7 @@ function DeleteForm({ todo }: Props) {
   });
   return (
     <form {...getFormProps(form)} action={formAction}>
-      <input
-        {...getInputProps(fields.id, { type: "hidden", value: false })}
-        value={todo.id}
-      />
+      <input {...getInputProps(fields.id, { type: "hidden", value: false })} value={todo.id} />
       <TodoButton
         className={cn(
           "absolute inset-y-0 right-2.5 my-auto hidden size-10 text-3xl text-neutral-400 transition-colors duration-200 ease-out",

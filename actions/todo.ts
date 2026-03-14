@@ -1,13 +1,10 @@
 "use server";
 
-import { prisma } from "@/actions/database";
-import {
-  createTodoSchema,
-  deleteTodoSchema,
-  updateTodoSchema,
-} from "@/schemas/todo";
 import { parseWithZod } from "@conform-to/zod/v4";
 import { unstable_noStore as noStore, updateTag } from "next/cache";
+
+import { prisma } from "@/actions/database";
+import { createTodoSchema, deleteTodoSchema, updateTodoSchema } from "@/schemas/todo";
 
 export async function fetchTodos() {
   noStore();

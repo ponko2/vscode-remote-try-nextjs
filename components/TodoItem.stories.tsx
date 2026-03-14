@@ -1,6 +1,7 @@
-import TodoItem from "@/components/TodoItem";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect } from "storybook/test";
+
+import TodoItem from "@/components/TodoItem";
 
 const meta = {
   component: TodoItem,

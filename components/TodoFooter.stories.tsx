@@ -1,6 +1,7 @@
-import TodoFooter from "@/components/TodoFooter";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect } from "storybook/test";
+
+import TodoFooter from "@/components/TodoFooter";
 
 const meta = {
   component: TodoFooter,
