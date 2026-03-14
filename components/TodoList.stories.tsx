@@ -1,6 +1,7 @@
-import TodoList from "@/components/TodoList";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect } from "storybook/test";
+
+import TodoList from "@/components/TodoList";
 
 const meta = {
   component: TodoList,

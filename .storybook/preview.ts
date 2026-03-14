@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/nextjs-vite";
 import { sb } from "storybook/test";
+
 import "../app/globals.css";
 
 sb.mock(import("../actions/todo.ts"));

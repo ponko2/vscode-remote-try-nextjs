@@ -1,6 +1,7 @@
-import TodoButton from "@/components/TodoButton";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect, fn } from "storybook/test";
+
+import TodoButton from "@/components/TodoButton";
 
 const meta = {
   component: TodoButton,

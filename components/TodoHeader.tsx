@@ -1,11 +1,12 @@
 "use client";
 
-import { createTodo, toggleAllTodos } from "@/actions/todo";
-import { cn } from "@/lib/utils";
-import { createTodoSchema } from "@/schemas/todo";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
 import { useActionState, useRef } from "react";
+
+import { createTodo, toggleAllTodos } from "@/actions/todo";
+import { cn } from "@/lib/utils";
+import { createTodoSchema } from "@/schemas/todo";
 
 interface Props {
   completedTodosCount: number;
@@ -76,9 +77,7 @@ export default function TodoHeader({ completedTodosCount, todosCount }: Props) {
         todos
       </h1>
       <CreateForm />
-      {!!todosCount && (
-        <ToggleForm checked={completedTodosCount === todosCount} />
-      )}
+      {!!todosCount && <ToggleForm checked={completedTodosCount === todosCount} />}
     </header>
   );
 }
